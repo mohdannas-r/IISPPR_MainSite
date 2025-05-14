@@ -30,7 +30,7 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#202d1a] to-[#202d1a] text-white flex flex-col">
-      {/* Sticky Header */}
+      {/* Sticky Headerrr */}
       <header className="fixed top-0 w-full z-50 flex justify-between items-center px-10 py-6 bg-[#202d1a]">
         <div className="text-xl font-bold text-lime-400">Qive Life</div>
         <nav className="space-x-10 hidden md:flex">

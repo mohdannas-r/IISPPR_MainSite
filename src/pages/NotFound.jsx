@@ -8,7 +8,7 @@ const NotFound = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* <Header /> */}
+      <Header />
 
       <main className="flex-1 flex-col bg-[#A5BF8A] text-center py-12 px-4 items-center justify-center ">
         <div className="flex justify-center">
@@ -49,7 +49,7 @@ const NotFound = () => {
         </div>
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

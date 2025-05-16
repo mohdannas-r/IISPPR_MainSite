@@ -6,15 +6,16 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: {
-          DEFAULT: '#4CAF50',
-          dark: '#388E3C',
-          light: '#81C784'
-        }
-      }
+      keyframes:{
+        scroll:{
+          '0%':{transform:'translateY(0)'},
+          '100%':{transform:'translateY(-100%)'},
+        },
+      },
+      animation:{
+        scroll:'scroll 30s linear infinite',
+      },
     },
   },
   plugins: [],
 }
-

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 
 const Gallery = () => {
   const events = ["Event-1", "Event-2", "Event-3", "Event-4", "Event-5", "Event-6"];
@@ -27,6 +27,15 @@ const Gallery = () => {
     "/gallery/im82.jpeg", "/gallery/im83.jpeg", "/gallery/im84.jpeg", "/gallery/im85.jpeg",
     "/gallery/im86.jpg", "/gallery/im87.jpeg", "/gallery/im88.jpeg" 
   ];
+ useEffect(()=>{
+  const scrollInterval=setInterval(()=>{
+    window.scrollBy({
+    top:5,
+    behavior:"smooth"});
+  },30);
+  return ()=>clearInterval(scrollInterval);
+},[]);
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#202d1a] to-[#202d1a] text-white flex flex-col">
@@ -46,7 +55,7 @@ const Gallery = () => {
       </header>
 
       {/* Masonry Gallery Grid */}
-      <div className="flex-1 bg-[#5a734b] pt-28 pb-10 px-4 md:px-20">
+      <div className="flex-1 p-8 bg-[#5a734b] pb-10 px-4 px-4 md:px-20">
         <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
           {images.map((img, idx) => (
             <img

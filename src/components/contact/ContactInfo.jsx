@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Gallery2 = () => {
+const ContactInfo = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const Gallery2 = () => {
     )
 }
 
-export default Gallery2
+export default ContactInfo

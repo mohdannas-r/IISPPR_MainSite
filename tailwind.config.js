@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#22330D',
+          light: '#3A5417',
+          dark: '#1A2608',
+        },
+      },
       keyframes:{
         scroll:{
           '0%':{transform:'translateY(0)'},

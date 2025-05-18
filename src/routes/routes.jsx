@@ -3,7 +3,7 @@ import Layout from '../components/layout/Layout';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
-import Gallery1 from '../pages/Gallery1';
+import Gallery2 from '../pages/Gallery2';
 import Projects from '../pages/Projects';
 import Testimonials from '../pages/Testimonials';
 
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'gallery',
-        element: <Gallery1 />
+        element: <Gallery2 />
       },
       {
         path: 'projects',

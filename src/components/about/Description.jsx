@@ -1,5 +1,5 @@
 import React from "react";
-import { images } from "../../../public/about"
+import { images } from "./images.js"
 
 const Description = () => {
   return (

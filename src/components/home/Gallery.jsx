@@ -3,10 +3,23 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  }),
+};
 
 const GalleryCarousel = () => {
   const images = Array.from({ length: 18 }, (_, i) => `/gallery_carousel/gi${i + 1}.webp`);
-  const slides = Array.from({ length: 3 }, (_, i) => images.slice(i * 6, (i + 1) * 6));
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -28,7 +41,6 @@ const GalleryCarousel = () => {
     },
   });
 
-
   useEffect(() => {
     if (!instanceRef.current) return;
     const interval = setInterval(() => instanceRef.current.next(), 6000);
@@ -39,127 +51,67 @@ const GalleryCarousel = () => {
   const handleMouseLeave = () => instanceRef.current?.play();
 
   return (
-      <section className="relative bg-white py-6 px-10 text-gray-900">
-        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 select-none">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-6 px-5">
-            <h2 className="text-4xl font-[playfair] font-semibold text-gray-900">Our Gallery</h2>
-            <Link
-                to="/gallery"
-                className="text-md font-semibold flex flex-row items-center gap-1 mt-3 hover:text-green-800 hover:scale-110 transition-transform"
+    <section className="relative bg-white py-16 sm:py-20 md:py-24">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={fadeInUp}
+          className="flex flex-col md:flex-row justify-between items-center mb-10 px-4"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4 md:mb-0">Our Gallery</h2>
+          <Link
+            to="/gallery"
+            className="inline-flex items-center gap-1 bg-accent text-primary px-5 py-2 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-colors"
+          >
+            View All <span className="ml-1">→</span>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={fadeInUp}
+          custom={1}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6"
+        >
+          {images.slice(0, 6).map((src, index) => (
+            <div 
+              key={index} 
+              className={`overflow-hidden rounded-xl ${
+                index === 1 || index === 4 ? 'sm:col-span-2 md:col-span-1' : ''
+              } ${
+                index === 2 || index === 5 ? 'sm:col-span-1 md:col-span-2' : ''
+              }`}
             >
-              <p className="font-[montserrat] text-base">Learn More</p>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-          </div>
+              <img
+                src={src}
+                alt={`Agricultural image ${index + 1}`}
+                className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+          ))}
+        </motion.div>
 
-          {isMobile ? (
-              <div className="relative">
-                <div
-                    ref={sliderRef}
-                    className="keen-slider"
-                >
-                  {images.map((src, i) => (
-                      <div key={i} className="keen-slider__slide">
-                        <div className="w-full h-[300px]">
-                          <img
-                              src={src}
-                              alt={`Gallery Image ${i + 1}`}
-                              loading="lazy"
-                              className="w-full h-full object-cover rounded-md"
-                          />
-                        </div>
-                      </div>
-                  ))}
-                </div>
-                <div className="flex flex-row justify-center gap-10 mt-4">
-                  <button
-                      aria-label="Previous"
-                      onClick={() => instanceRef.current?.prev()}
-                      className="bg-[#22370D] text-white rounded-full size-7 flex items-center justify-center shadow-md hover:scale-110 transition"
-                  >
-                    <ChevronLeft size={20} />
-                  </button>
-                  <button
-                      aria-label="Next"
-                      onClick={() => instanceRef.current?.next()}
-                      className="bg-[#22370D] text-white rounded-full size-7 flex items-center justify-center shadow-md hover:scale-110 transition"
-                  >
-                    <ChevronRight size={20} />
-                  </button>
-                </div>
-              </div>
-
-          ) : (
-              <div className="relative mx-6">
-                <div
-                    ref={sliderRef}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    className="keen-slider"
-                >
-                  {slides.map((group, idx) => (
-                      <div key={idx} className="keen-slider__slide grid grid-cols-4 gap-4">
-                        {group.map((src, i) => {
-                          const widthClasses = [
-                            "col-span-1",
-                            "col-span-2",
-                            "col-span-1",
-                            "col-span-1",
-                            "col-span-1",
-                            "col-span-2",
-                          ];
-                          return (
-                              <div
-                                  key={i}
-                                  className={`overflow-hidden h-[300px] ${widthClasses[i % widthClasses.length]}`}
-                              >
-                                <img
-                                    src={src}
-                                    alt={`Gallery Image ${idx * 6 + i + 1}`}
-                                    loading="lazy"
-                                    className="w-full h-full object-cover rounded-md shadow-md"
-                                />
-                              </div>
-                          );
-                        })}
-                      </div>
-                  ))}
-                </div>
-
-                <button
-                    aria-label="Previous"
-                    onClick={() => instanceRef.current?.prev()}
-                    className="absolute top-1/2 -left-12 -translate-y-1/2 -translate-x-1/2 bg-[#22370D] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:scale-110 transition"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <button
-                    aria-label="Next"
-                    onClick={() => instanceRef.current?.next()}
-                    className="absolute top-1/2 -right-12 -translate-y-1/2 translate-x-1/2 bg-[#22370D] text-white rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:scale-110 transition"
-                >
-                  <ChevronRight size={24} />
-                </button>
-              </div>
-          )}
-
-          {!isMobile && (
-              <div className="flex justify-center mt-4 space-x-2">
-                {slides.map((_, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => instanceRef.current?.moveToIdx(idx)}
-                        className={`w-8 h-2 rounded-full transition ${
-                            currentSlide === idx ? "bg-[#C3FF00D9] scale-110" : "bg-[#D9D9D9]"
-                        }`}
-                    />
-                ))}
-              </div>
-          )}
-        </div>
-      </section>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={fadeInUp}
+          custom={2}
+          className="mt-8 text-center"
+        >
+          <Link
+            to="/gallery"
+            className="inline-flex items-center gap-1 text-primary font-semibold hover:text-accent transition-colors"
+          >
+            See More Images <span className="ml-1">→</span>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

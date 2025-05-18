@@ -21,93 +21,92 @@ const ProjectsHighlight = () => {
       title: 'Project 1',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum sem quis eros posuere.',
+      image: '/gallery/im1.jpg'
     },
     {
       title: 'Project 2',
       description:
         'Sed ultricies libero quis sem porttitor lacinia. Nunc a ultrices ex. Nulla facilisi.',
+      image: '/gallery/im2.jpeg'
     },
     {
       title: 'Project 3',
       description:
         'Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et netus.',
+      image: '/gallery/im3.jpeg'
     },
   ];
 
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-b from-[#1a1f1c] via-[#1a1f1c] to-[#fff8e7]">
-      {/* Content */}
-      <div className="relative z-10 pt-20 pb-16 max-w-7xl mx-auto px-6 text-white">
-        {/* Heading */}
-        <motion.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.5 }}
-          variants={fadeInUp}
-          className="text-[48px] md:text-[80px] font-playfair font-medium leading-tight"
-        >
-          Projects
-        </motion.h2>
-
-        {/* Description */}
-        <motion.p
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.5 }}
-          variants={fadeInUp}
-          custom={1}
-          className="mt-6 max-w-3xl text-lg font-montserrat leading-relaxed"
-        >
-          Explore our impactful projects driving positive change in communities worldwide.
-        </motion.p>
-
-        {/* Button */}
+    <section className="relative w-full py-16 sm:py-20 md:py-24 bg-secondary">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-7xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.5 }}
           variants={fadeInUp}
-          custom={2}
-          className="mt-6"
+          className="text-center mb-12"
         >
-          <Link to="/projects">
-            <button className="bg-lime-400 text-black font-semibold font-montserrat px-6 py-3 rounded-full flex items-center gap-2 transition duration-300 hover:bg-black hover:text-white hover:scale-105 hover:shadow-xl">
-              See More <span className="text-xl">→</span>
-            </button>
-          </Link>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            Projects
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl mx-auto">
+            Explore our impactful projects driving positive change in communities worldwide.
+          </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              custom={index + 3}
+              custom={index + 1}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
               variants={fadeInUp}
-              className="relative group"
+              className="relative overflow-hidden rounded-xl group h-64 sm:h-72 md:h-80"
             >
-              {/* Glow on Hover */}
-              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-purple-500 to-lime-400 opacity-0 group-hover:opacity-100 blur transition duration-300"></div>
-
-              {/* Card Content */}
-              <div className="relative bg-white/80 backdrop-blur-md rounded-2xl p-6 text-black shadow-lg border border-white/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl hover:rotate-[1deg]">
-                <h3 className="text-2xl font-playfair mb-4">{project.title}</h3>
-                <p className="text-sm font-montserrat mb-6">{project.description}</p>
+              {/* Background Image */}
+              <img 
+                src={project.image} 
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-primary/70 transition-opacity"></div>
+              
+              {/* Content */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-sm text-white/90 mb-4">{project.description}</p>
                 <Link
                   to="/projects"
-                  className="inline-flex items-center gap-1 font-semibold font-montserrat hover:underline"
+                  className="inline-flex items-center mt-auto text-sm font-medium text-accent hover:text-white transition-colors"
                 >
-                  Learn More <span>→</span>
+                  Learn More <span className="ml-1">→</span>
                 </Link>
               </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
+          variants={fadeInUp}
+          custom={4}
+          className="mt-10 text-center"
+        >
+          <Link to="/projects">
+            <button className="bg-accent text-primary font-semibold px-6 py-3 rounded-full transition duration-300 hover:bg-white hover:text-primary">
+              View All Projects <span className="ml-1">→</span>
+            </button>
+          </Link>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

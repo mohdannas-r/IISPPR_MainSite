@@ -1,42 +1,91 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
 
 const WorkTogether = () => {
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center gap-16 p-6 pt-12 md:pb-36 w-full">
-      {/* Image Block */}
-      <div className="relative w-full max-w-lg flex-shrink-0 mt-[10vh]">
-        <div className="w-[18rem] h-[18rem] sm:w-[24rem] sm:h-[24rem] md:w-[28rem] md:h-[28rem] rounded-xl overflow-hidden shadow-lg">
-          <img
-            src="/home/about1.webp"
-            loading="lazy"
-            width="448"
-            height="448"
-            alt="People helping each other"
-            className="w-full h-full object-cover"
-          />
+    <section className="relative bg-white w-full overflow-hidden">
+      {/* Top diagonal shape */}
+      <div className="absolute top-0 left-0 w-full h-36 bg-white transform -skew-y-3 -translate-y-16 z-10"></div>
+      
+      {/* Bottom diagonal shape */}
+      <div className="absolute bottom-0 left-0 w-full h-36 bg-primary transform skew-y-3 translate-y-16 z-10"></div>
+      
+      {/* Content */}
+      <div className="relative z-20 container mx-auto px-4 py-16 md:py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-lg font-medium text-accent mb-2">About Us</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Together We Can Make <br />
+            A Greener World
+          </h3>
+          <p className="max-w-2xl mx-auto text-gray-600">
+            At Green Initiative, we believe that environmental change starts with individual action. 
+            By working together, we can protect our natural resources, reduce carbon emissions, 
+            and create sustainable communities for future generations.
+          </p>
         </div>
 
-        <div className="absolute -bottom-28 right-5 sm:-right-5 w-[12rem] h-[12rem] sm:w-[16rem] sm:h-[16rem] md:w-[20rem] md:h-[20rem] rounded-xl overflow-hidden shadow-md">
-          <img
-            src="/gallery_carousel/gi1.webp"
-            loading="lazy"
-            width="320"
-            height="320"
-            alt="Volunteer activity"
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {/* Left Image with Content */}
+          <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
+            <img
+              src="/home/about1.webp"
+              alt="Environmental initiative"
+              className="w-full h-52 md:h-64 object-cover"
+            />
+            <div className="p-6">
+              <h4 className="text-xl font-semibold text-primary mb-3">Our Mission</h4>
+              <p className="text-gray-600 mb-4">
+                Our mission is to create a sustainable future through community engagement and 
+                innovative environmental solutions that protect our planet for generations to come.
+              </p>
+              <a href="/about" className="text-accent font-medium hover:underline">
+                Learn more →
+              </a>
+            </div>
+          </div>
 
-      {/* Text Block */}
-      <div className="max-w-xl text-center lg:text-left lg:mt-10 mt-20 px-4">
-        <h2 className="text-[18px] font-semibold font-[Montserrat] text-gray-900 mt-[8vh]">About Us</h2>
-        <h3 className="text-4xl font-bold text-gray-900">Your Support is Really</h3>
-        <h3 className="text-4xl font-bold text-gray-900 mb-6">Powerful</h3>
-        <p className="text-gray-700 text-base leading-relaxed max-w-md mx-auto lg:mx-0">
-          The secret to happiness lies in helping others. Never underestimate the difference YOU can make in the
-          lives of the poor, the abused and the helpless.
-        </p>
+          {/* Right Image with Content */}
+          <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
+            <img
+              src="/home/herobg.webp"
+              alt="Green environment"
+              className="w-full h-52 md:h-64 object-cover"
+            />
+            <div className="p-6">
+              <h4 className="text-xl font-semibold text-primary mb-3">Our Approach</h4>
+              <p className="text-gray-600 mb-4">
+                We focus on practical, sustainable solutions through education, conservation,
+                and implementing green technologies that make a real difference in our communities.
+              </p>
+              <a href="/projects" className="text-accent font-medium hover:underline">
+                View our projects →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <a
+            href="/about"
+            className="inline-block bg-accent text-white font-semibold px-8 py-3 rounded-full hover:bg-accent-dark transition-colors"
+          >
+            Our Approach →
+          </a>
+        </div>
       </div>
     </section>
   );

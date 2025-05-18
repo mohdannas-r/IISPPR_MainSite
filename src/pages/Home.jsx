@@ -8,50 +8,25 @@ import AboutSection from '../components/home/AboutSection';
 
 const Home = () => {
   return (
-    <div className="h-[663vh]">
-		{/* This is the main div*/}
-		
-		
-			{/* Section 1 : Hero*/}
-			<Hero />			
-			
-			
-			{/* Section 2 About*/}
-			<AboutSection />
-			
-			
-			{/* Left blank intentionaly*/}
-			<div className="bg-white h-[22vh]"></div>
-			
-			
-			{/* Section 3  Gallery*/}
-			<Gallery />
-			
-			
-			{/* Left blank intentionaly*/}
-			<div className="bg-white h-[14.7vh]"></div>
-			
-			{/* Section 4  Projects*/}
-			<ProjectsHighlight />
-			
-			
-			
-			{/* Section 5  (Testimonials)*/}
-			<TestimonialsSection />
-			
-			
-			
-			{/* Section 6 (Stats)*/}
-			<StatsSection />
-			
-			
-			
-			{/* Left blank intentionaly*/}
-			<div className="bg-white h-[14vh]"></div>
-			
-
-		</div>
-
+    <div>
+      {/* Hero Section */}
+      <Hero />
+      
+      {/* About Section */}
+      <AboutSection />
+      
+      {/* Gallery Section */}
+      <Gallery />
+      
+      {/* Projects Section */}
+      <ProjectsHighlight />
+      
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+      
+      {/* Stats Section */}
+      <StatsSection />
+    </div>
   );
 };
 

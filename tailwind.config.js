@@ -8,10 +8,24 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#22330D',
+          DEFAULT: '#22370D',
           light: '#3A5417',
           dark: '#1A2608',
         },
+        secondary: {
+          DEFAULT: '#606758',
+          light: '#7A8273',
+          dark: '#464D41',
+        },
+        accent: {
+          DEFAULT: '#C3FF00',
+          light: '#D7FF4D',
+          dark: '#9FC700',
+        },
+        overlay: {
+          dark: 'rgba(34, 55, 13, 0.8)',
+          light: 'rgba(34, 55, 13, 0.2)',
+        }
       },
       keyframes:{
         scroll:{

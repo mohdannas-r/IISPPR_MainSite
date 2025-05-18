@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import MissionCard from "./MissionCard";
 
@@ -47,11 +47,11 @@ const TypingText = ({ lines, className }) => {
   }, [charIndex, lineIndex, lines]);
 
   return (
-    <div className={`${className} min-h-[6rem]`}>
+    <div className={`${className} min-h-[4rem] sm:min-h-[6rem]`}>
       {lines.map((_, i) => (
         <h1
           key={i}
-          className="text-3xl md:text-5xl font-extrabold leading-tight"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight"
         >
           {displayedText[i]}
           {i === lineIndex && <span className="animate-pulse">|</span>}
@@ -62,14 +62,12 @@ const TypingText = ({ lines, className }) => {
 };
 
 const Hero = () => {
-  const learn_more = true;
-
   return (
-    <section className="relative z-20 flex-grow w-full min-h-[82vh] bg-[url('/home/herobg.webp')] bg-cover bg-center text-white">
+    <section className="relative z-20 flex-grow w-full min-h-[85vh] bg-[url('/home/herobg.webp')] bg-cover bg-center">
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
+      <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-      <div className="relative z-20 w-full flex flex-col lg:flex-row items-center lg:items-start justify-between px-6 py-12 gap-12">
+      <div className="relative z-20 w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 gap-8 lg:gap-12">
         {/* Hero Left Section */}
         <motion.div
           initial="hidden"
@@ -78,25 +76,34 @@ const Hero = () => {
           variants={fadeInUp}
           className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left"
         >
-          <button className="mb-4 px-4 py-2 border border-white rounded-full text-sm text-white hover:bg-white hover:text-black">
-            Give Hope For Homeless
+          <button className="mb-4 px-4 py-2 border border-accent rounded-full text-xs sm:text-sm text-white hover:bg-accent hover:text-primary transition-colors">
+            Sustainable Environment
           </button>
 
-          <TypingText
-            lines={["Helping Each Other.", "One Step At A Time"]}
-            className="mb-4"
-          />
+          <div className="text-white mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2">
+              We're On A Mission
+            </h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
+              To Save Our Planet
+            </h1>
+          </div>
 
-          <p className="text-sm md:text-lg max-w-xl">
-            We seek out world changers and difference makers around the
-          </p>
-          <p className="text-sm md:text-lg mb-6 max-w-xl">
-            globe, and equip them to fulfill their unique purpose.
-          </p>
+          <div className="space-y-2 mb-6">
+            <p className="text-sm sm:text-base md:text-lg max-w-xl text-white">
+              Join us in creating a greener, more sustainable world. Together we can make a difference
+              through conservation, renewable energy, and eco-friendly practices.
+            </p>
+          </div>
 
-          <button className="bg-lime-400 text-black font-semibold px-6 py-2 rounded-full hover:bg-black hover:text-white transition text-sm md:text-base">
-            Read more →
-          </button>
+          <div className="flex flex-wrap gap-4">
+            <button className="bg-accent text-primary font-semibold px-5 sm:px-6 py-2 rounded-full hover:bg-white hover:text-primary transition text-xs sm:text-sm md:text-base">
+              Our Projects
+            </button>
+            <button className="border border-white text-white font-semibold px-5 sm:px-6 py-2 rounded-full hover:bg-white hover:text-primary transition text-xs sm:text-sm md:text-base">
+              Learn More
+            </button>
+          </div>
         </motion.div>
 
         {/* Mission Section */}
@@ -106,9 +113,9 @@ const Hero = () => {
           viewport={{ once: false, amount: 0.3 }}
           custom={1}
           variants={fadeInUp}
-          className="w-full lg:w-1/2"
+          className="w-full sm:w-4/5 md:w-3/4 lg:w-1/2 mt-8 lg:mt-0"
         >
-          <MissionCard learn_more />
+          <MissionCard />
         </motion.div>
       </div>
     </section>

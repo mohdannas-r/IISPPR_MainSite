@@ -1,8 +1,6 @@
-import React,{useEffect} from "react";
+import React, { useCallback, useRef } from "react";
 
 const Gallery = () => {
-  const events = ["Event-1", "Event-2", "Event-3", "Event-4", "Event-5", "Event-6"];
-
   const images = [
     "/gallery/im1.jpg", "/gallery/im2.jpeg", "/gallery/im3.jpeg", "/gallery/im4.jpg",
     "/gallery/im5.jpeg", "/gallery/im6.jpg", "/gallery/im7.jpg", "/gallery/im8.jpg",
@@ -27,80 +25,88 @@ const Gallery = () => {
     "/gallery/im82.jpeg", "/gallery/im83.jpeg", "/gallery/im84.jpeg", "/gallery/im85.jpeg",
     "/gallery/im86.jpg", "/gallery/im87.jpeg", "/gallery/im88.jpeg" 
   ];
- useEffect(()=>{
-  const scrollInterval=setInterval(()=>{
-    window.scrollBy({
-    top:5,
-    behavior:"smooth"});
-  },30);
-  return ()=>clearInterval(scrollInterval);
-},[]);
-  
+
+  // Split the images into batches to optimize rendering
+  const initialBatchSize = 20;
+  const [displayedImages, setDisplayedImages] = React.useState(images.slice(0, initialBatchSize));
+  const loaderRef = useRef(null);
+
+  // Implement intersection observer for lazy loading
+  const observerCallback = useCallback(
+    (entries) => {
+      const [entry] = entries;
+      if (entry.isIntersecting && displayedImages.length < images.length) {
+        const nextBatch = images.slice(
+          displayedImages.length,
+          displayedImages.length + initialBatchSize
+        );
+        setDisplayedImages(prev => [...prev, ...nextBatch]);
+      }
+    },
+    [displayedImages, images]
+  );
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1
+    });
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    };
+  }, [observerCallback]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#202d1a] to-[#202d1a] text-white flex flex-col">
-      {/* Sticky Headerrr */}
-      <header className="fixed top-0 w-full z-50 flex justify-between items-center px-10 py-6 bg-[#202d1a]">
-        <div className="text-xl font-bold text-lime-400">Qive Life</div>
-        <nav className="space-x-10 hidden md:flex">
-          <a href="#" className="hover:text-lime-400">Home</a>
-          <a href="#" className="hover:text-lime-400">About</a>
-          <a href="#" className="hover:text-lime-400">Testimonials</a>
-          <a href="#" className="hover:text-lime-400">Gallery</a>
-          <a href="#" className="hover:text-lime-400">Projects</a>
-        </nav>
-        <div className="flex items-center space-x-4">
-          <button className="bg-lime-400 px-4 py-2 rounded-full text-black font-medium hover:bg-lime-500">Contact</button>
-        </div>
-      </header>
-
-      {/* Masonry Gallery Grid */}
-      <div className="flex-1 p-8 bg-[#5a734b] pb-10 px-4 md:px-20">
-        <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
-          {images.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt={`Gallery ${idx + 1}`}
-              className="w-full mb-4 rounded-xl object-cover shadow-lg break-inside-avoid transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg "
-            />
-          ))}
+    <div className="min-h-screen bg-[#5a734b] text-white flex flex-col">
+      {/* Page Title */}
+      <div className="bg-gradient-to-r from-primary to-primary-dark py-12 px-4">
+        <div className="container mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold text-white text-center">IISPPR Gallery</h1>
+          <p className="text-center text-white/80 mt-4 max-w-2xl mx-auto">
+            Explore our collection of images showcasing our environmental initiatives, 
+            community projects, and the beautiful nature we're working to preserve.
+          </p>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-black text-white py-10 px-6 md:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
-          <div>
-            <h4 className="font-bold text-lime-400 mb-2">Qive Life</h4>
-            <p>1234 Life St.<br />Peaceful City, 45678</p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Useful Links</h4>
-            <ul>
-              <li><a href="#" className="hover:text-lime-400">Contact</a></li>
-              <li><a href="#" className="hover:text-lime-400">FAQs</a></li>
-              <li><a href="#" className="hover:text-lime-400">Support</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Resources</h4>
-            <ul>
-              <li><a href="#" className="hover:text-lime-400">Gallery</a></li>
-              <li><a href="#" className="hover:text-lime-400">Events</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Subscribe</h4>
-            <input type="email" placeholder="Enter your email" className="px-3 py-1 rounded text-black w-full mb-2" />
-            <button className="bg-lime-400 text-black px-4 py-1 rounded w-full hover:bg-lime-500">Subscribe</button>
-            
-          </div>
+      {/* Masonry Gallery Grid */}
+      <div className="flex-1 p-6 md:p-12 container mx-auto">
+        <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+          {displayedImages.map((img, idx) => (
+            <div 
+              key={idx} 
+              className="mb-4 rounded-xl overflow-hidden shadow-lg break-inside-avoid"
+            >
+              <img
+                src={img}
+                alt={`Gallery ${idx + 1}`}
+                loading="lazy"
+                className="w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                width="600"
+                height="400"
+              />
+            </div>
+          ))}
         </div>
-        <div className="text-center mt-6 text-xs text-gray-400">
-          © 2025 Qive Life. All rights reserved.
-        </div>
-      </footer>
+        
+        {/* Loading trigger element */}
+        {displayedImages.length < images.length && (
+          <div 
+            ref={loaderRef} 
+            className="h-10 w-full flex justify-center items-center my-8"
+          >
+            <div className="animate-pulse bg-white/20 rounded-full h-8 w-8"></div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

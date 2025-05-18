@@ -6,6 +6,7 @@ import Contact from '../pages/Contact';
 import Gallery from '../pages/Gallery';
 import Projects from '../pages/Projects';
 import Testimonials from '../pages/Testimonials';
+import NotFound from '../pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
       { path: 'contact', element: <Contact /> },
       { path: 'gallery', element: <Gallery /> },
       { path: 'projects', element: <Projects /> },
-      { path: 'testimonials', element: <Testimonials /> }
+      { path: 'testimonials', element: <Testimonials /> },
+      { path: '*', element: <NotFound /> }
     ]
   }
 ]);

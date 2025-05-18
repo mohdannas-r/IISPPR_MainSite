@@ -32,7 +32,7 @@ const WorkTogether = () => {
             A Greener World
           </h3>
           <p className="max-w-2xl mx-auto text-gray-600">
-            At Green Initiative, we believe that environmental change starts with individual action. 
+            At IISPPR, we believe that environmental change starts with individual action. 
             By working together, we can protect our natural resources, reduce carbon emissions, 
             and create sustainable communities for future generations.
           </p>

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import MissionCard from "./MissionCard";
 
 // Animation Variant
@@ -16,8 +17,8 @@ const fadeInUp = {
   }),
 };
 
-// Typing Text Component
-const TypingText = ({ lines, className }) => {
+// Typing Text Component - Memoized for better performance
+const TypingText = React.memo(({ lines, className }) => {
   const [displayedText, setDisplayedText] = useState(["", ""]);
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -59,7 +60,9 @@ const TypingText = ({ lines, className }) => {
       ))}
     </div>
   );
-};
+});
+
+TypingText.displayName = 'TypingText';
 
 const Hero = () => {
   return (
@@ -97,12 +100,18 @@ const Hero = () => {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <button className="bg-accent text-primary font-semibold px-5 sm:px-6 py-2 rounded-full hover:bg-white hover:text-primary transition text-xs sm:text-sm md:text-base">
+            <Link 
+              to="/projects"
+              className="bg-accent text-primary font-semibold px-5 sm:px-6 py-2 rounded-full hover:bg-white hover:text-primary transition text-xs sm:text-sm md:text-base"
+            >
               Our Projects
-            </button>
-            <button className="border border-white text-white font-semibold px-5 sm:px-6 py-2 rounded-full hover:bg-white hover:text-primary transition text-xs sm:text-sm md:text-base">
+            </Link>
+            <Link 
+              to="/about"
+              className="border border-white text-white font-semibold px-5 sm:px-6 py-2 rounded-full hover:bg-white hover:text-primary transition text-xs sm:text-sm md:text-base"
+            >
               Learn More
-            </button>
+            </Link>
           </div>
         </motion.div>
 

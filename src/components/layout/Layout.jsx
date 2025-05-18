@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const Layout = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const location = useLocation();
+    
+    const isActive = (path) => {
+        if (path === '/' && location.pathname === '/') {
+            return true;
+        }
+        return location.pathname === path || (path !== '/' && location.pathname.startsWith(path));
+    };
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
@@ -13,16 +21,16 @@ const Layout = () => {
             <header className="bg-white shadow-sm sticky top-0 z-50">
                 <nav className="container mx-auto px-4 py-3 sm:py-4">
                     <div className="flex justify-between items-center">
-                        <Link to="/" className="text-xl sm:text-2xl font-bold text-primary">Green Initiative</Link>
+                        <Link to="/" className="text-xl sm:text-2xl font-bold text-primary">IISPPR</Link>
                         
                         {/* Desktop Navigation */}
                         <ul className="hidden md:flex space-x-6 lg:space-x-8">
-                            <li><Link to="/" className="font-medium text-gray-700 hover:text-primary transition-colors">Home</Link></li>
-                            <li><Link to="/about" className="font-medium text-gray-700 hover:text-primary transition-colors">About</Link></li>
-                            <li><Link to="/projects" className="font-medium text-gray-700 hover:text-primary transition-colors">Projects</Link></li>
-                            <li><Link to="/gallery" className="font-medium text-gray-700 hover:text-primary transition-colors">Gallery</Link></li>
-                            <li><Link to="/testimonials" className="font-medium text-gray-700 hover:text-primary transition-colors">Testimonials</Link></li>
-                            <li><Link to="/contact" className="font-medium text-gray-700 hover:text-primary transition-colors">Contact</Link></li>
+                            <li><Link to="/" className={`font-medium transition-colors ${isActive('/') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>Home</Link></li>
+                            <li><Link to="/about" className={`font-medium transition-colors ${isActive('/about') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>About</Link></li>
+                            <li><Link to="/projects" className={`font-medium transition-colors ${isActive('/projects') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>Projects</Link></li>
+                            <li><Link to="/gallery" className={`font-medium transition-colors ${isActive('/gallery') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>Gallery</Link></li>
+                            <li><Link to="/testimonials" className={`font-medium transition-colors ${isActive('/testimonials') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>Testimonials</Link></li>
+                            <li><Link to="/contact" className={`font-medium transition-colors ${isActive('/contact') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}>Contact</Link></li>
                         </ul>
                         
                         {/* Mobile Menu Button */}
@@ -41,12 +49,12 @@ const Layout = () => {
                     {mobileMenuOpen && (
                         <div className="md:hidden py-4 bg-white border-t mt-3">
                             <ul className="flex flex-col space-y-3 px-4">
-                                <li><Link to="/" className="block font-medium text-gray-700 hover:text-primary transition-colors" onClick={toggleMobileMenu}>Home</Link></li>
-                                <li><Link to="/about" className="block font-medium text-gray-700 hover:text-primary transition-colors" onClick={toggleMobileMenu}>About</Link></li>
-                                <li><Link to="/projects" className="block font-medium text-gray-700 hover:text-primary transition-colors" onClick={toggleMobileMenu}>Projects</Link></li>
-                                <li><Link to="/gallery" className="block font-medium text-gray-700 hover:text-primary transition-colors" onClick={toggleMobileMenu}>Gallery</Link></li>
-                                <li><Link to="/testimonials" className="block font-medium text-gray-700 hover:text-primary transition-colors" onClick={toggleMobileMenu}>Testimonials</Link></li>
-                                <li><Link to="/contact" className="block font-medium text-gray-700 hover:text-primary transition-colors" onClick={toggleMobileMenu}>Contact</Link></li>
+                                <li><Link to="/" className={`block font-medium transition-colors ${isActive('/') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`} onClick={toggleMobileMenu}>Home</Link></li>
+                                <li><Link to="/about" className={`block font-medium transition-colors ${isActive('/about') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`} onClick={toggleMobileMenu}>About</Link></li>
+                                <li><Link to="/projects" className={`block font-medium transition-colors ${isActive('/projects') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`} onClick={toggleMobileMenu}>Projects</Link></li>
+                                <li><Link to="/gallery" className={`block font-medium transition-colors ${isActive('/gallery') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`} onClick={toggleMobileMenu}>Gallery</Link></li>
+                                <li><Link to="/testimonials" className={`block font-medium transition-colors ${isActive('/testimonials') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`} onClick={toggleMobileMenu}>Testimonials</Link></li>
+                                <li><Link to="/contact" className={`block font-medium transition-colors ${isActive('/contact') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`} onClick={toggleMobileMenu}>Contact</Link></li>
                             </ul>
                         </div>
                     )}
@@ -61,7 +69,7 @@ const Layout = () => {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                         <div>
-                            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Green Initiative</h3>
+                            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">IISPPR</h3>
                             <p className="text-gray-300 text-sm sm:text-base">Promoting sustainable practices and environmental conservation for a healthier planet.</p>
                         </div>
                         <div>
@@ -91,7 +99,7 @@ const Layout = () => {
                         </div>
                     </div>
                     <div className="border-t border-primary-light mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300 text-sm sm:text-base">
-                        <p>© {new Date().getFullYear()} Green Initiative. All rights reserved.</p>
+                        <p>© {new Date().getFullYear()} IISPPR. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

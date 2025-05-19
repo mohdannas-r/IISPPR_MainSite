@@ -1,7 +1,37 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { FaHandsHelping, FaUsers, FaDove, FaGlobe } from 'react-icons/fa';
+import { IoWomanOutline } from 'react-icons/io5';
 import { motion, useInView } from 'framer-motion';
 import CountUp from 'react-countup';
-import { Users, Globe, Heart, Handshake } from 'lucide-react';
+
+const stats = [
+  {
+    icon: <FaHandsHelping className="text-primary text-3xl md:text-4xl" />,
+    number: 21,
+    label: 'Active States',
+  },
+  {
+    icon: <FaGlobe className="text-primary text-3xl md:text-4xl" />,
+    number: 53,
+    label: 'Countries Research Community',
+  },
+  {
+    icon: <FaUsers className="text-primary text-3xl md:text-4xl" />,
+    number: 10000,
+    label: 'People Reach',
+    isMillion: true,
+  },
+  {
+    icon: <IoWomanOutline className="text-primary text-3xl md:text-4xl" />,
+    number: 8000,
+    label: 'Women Reach',
+  },
+  {
+    icon: <FaDove className="text-primary text-3xl md:text-4xl" />,
+    number: 50000,
+    label: 'People on Social Media',
+  },
+];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,33 +45,6 @@ const fadeInUp = {
     },
   }),
 };
-
-const stats = [
-  {
-    icon: <Handshake className="text-primary text-3xl md:text-4xl" />,
-    number: 400,
-    label: 'Active Projects',
-    suffix: '+',
-  },
-  {
-    icon: <Globe className="text-primary text-3xl md:text-4xl" />,
-    number: 900,
-    label: 'Farmers Supported',
-    suffix: '+',
-  },
-  {
-    icon: <Users className="text-primary text-3xl md:text-4xl" />,
-    number: 200,
-    label: 'Rural Communities',
-    suffix: '+',
-  },
-  {
-    icon: <Heart className="text-primary text-3xl md:text-4xl" />,
-    number: 50,
-    label: 'Countries Reached',
-    suffix: '+',
-  },
-];
 
 const StatsSection = () => {
   const sectionRef = useRef(null);
@@ -72,7 +75,8 @@ const StatsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        {/* Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
@@ -83,9 +87,13 @@ const StatsSection = () => {
               custom={i}
               className="flex flex-col items-center p-4 sm:p-6 rounded-lg bg-accent/20"
             >
-              <div className="bg-white p-3 sm:p-4 rounded-full mb-4 shadow-md">
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="bg-white p-3 sm:p-4 rounded-full mb-4 shadow-md"
+              >
                 {stat.icon}
-              </div>
+              </motion.div>
               <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
                 {startCount ? (
                   <CountUp
@@ -93,10 +101,10 @@ const StatsSection = () => {
                     end={stat.number}
                     duration={2.5}
                     separator=","
-                    suffix={stat.suffix}
+                    suffix={stat.isMillion ? '+' : '+'}
                   />
                 ) : (
-                  `0${stat.suffix}`
+                  `0+`
                 )}
               </div>
               <div className="text-sm sm:text-base text-gray-600 font-medium mt-2 text-center">
@@ -106,16 +114,9 @@ const StatsSection = () => {
           ))}
         </div>
 
+        {/* Logos */}
         <div className="flex justify-center gap-12 mt-16">
-          <motion.img 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-            src="/home/statstop.jpg" 
-            alt="Partner logo" 
-            className="h-10 sm:h-12 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-          />
+
           <motion.img 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -125,24 +126,8 @@ const StatsSection = () => {
             alt="Partner logo" 
             className="h-10 sm:h-12 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
           />
-          <motion.img 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            viewport={{ once: true }}
-            src="/home/statstop.jpg" 
-            alt="Partner logo" 
-            className="h-10 sm:h-12 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-          />
-          <motion.img 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            viewport={{ once: true }}
-            src="/home/statsbottom.jpg" 
-            alt="Partner logo" 
-            className="h-10 sm:h-12 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-          />
+
+
         </div>
       </div>
     </section>

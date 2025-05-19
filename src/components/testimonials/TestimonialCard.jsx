@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TestimonialCard = ({ index, name, testimonialdata }) => {
+const TestimonialCard = ({ key, name, testimonialdata, color, imageSrc }) => {
 
     const hoverCard = `
     .testimonial-card {
@@ -18,20 +18,23 @@ const TestimonialCard = ({ index, name, testimonialdata }) => {
             <style jsx global>
                 {hoverCard}
             </style>
-            <div key={index} className="bg-[#17594A] p-6 rounded-xl testimonial-card w-[340px] m-6 h-[400px] text-white">
+            <div key={key}
+                style={{ backgroundColor: color }}
+                // className={`bg-[${color}]  p-6 rounded-xl testimonial-card w-[340px] m-6 h-[400px] text-white hover:bg-[#23291C]`}
+                className={` p-6 rounded-xl testimonial-card w-[340px] m-6 h-[360px] max-h-[360px] text-white`}>
                 <div className="flex flex-col items-center mb-4">
-                    <div className="w-24 h-24 bg-gray-700 rounded-full overflow-hidden mb-2">
+                    <div className="w-[100px] h-[100px] bg-gray-700 rounded-full overflow-hidden mb-2">
                         <img
-                            src="/placeholder.svg?height=100&width=100"
+                            src={`${imageSrc}`}
                             alt={name}
-                            className="w-24 h-24 object-cover bg-[#23291C] rounded-full "
+
+                            className="w-[100px] h-[100px] object-cover bg-[#23291C] rounded-full "
                         />
                     </div>
-                    <h4 className="font-medium leading-4 tex-xl text-white">{name}</h4>
+                    <h4 className="font-medium leading-4 tex-xl mt-2">{name}</h4>
                 </div>
-                <p className="text-[17px] px-6 text-center text-white">
-                    {testimonialdata}
-                </p>
+                <p className="text-[18px] px-6 py-3 font-normal text-center">
+                    {testimonialdata}               </p>
             </div>
         </>
     )

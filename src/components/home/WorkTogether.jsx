@@ -17,11 +17,7 @@ const fadeInUp = {
 const WorkTogether = () => {
   return (
     <section className="relative bg-white w-full overflow-hidden">
-      {/* Top diagonal shape */}
-      <div className="absolute top-0 left-0 w-full h-36 bg-white transform -skew-y-3 -translate-y-16 z-10"></div>
-      
-      {/* Bottom diagonal shape */}
-      <div className="absolute bottom-0 left-0 w-full h-36 bg-primary transform skew-y-3 translate-y-16 z-10"></div>
+
       
       {/* Content */}
       <div className="relative z-20 container mx-auto px-4 py-16 md:py-24">
@@ -42,7 +38,7 @@ const WorkTogether = () => {
           {/* Left Image with Content */}
           <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
             <img
-              src="/home/about1.webp"
+              src="/gallery_carousel/gi15.webp"
               alt="Environmental initiative"
               className="w-full h-52 md:h-64 object-cover"
             />
@@ -61,7 +57,7 @@ const WorkTogether = () => {
           {/* Right Image with Content */}
           <div className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
             <img
-              src="/home/herobg.webp"
+              src="/gallery_carousel/gi17.webp"
               alt="Green environment"
               className="w-full h-52 md:h-64 object-cover"
             />

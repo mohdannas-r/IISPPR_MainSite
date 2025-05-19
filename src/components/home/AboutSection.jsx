@@ -19,15 +19,16 @@ const AboutSection = () => {
   return (
     <div className="relative">
       <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={fadeInUp}
-        custom={0}
-        viewport={{ once: false, amount: 0.5 }}
-        className="relative z-10"
-      >
-        <WorkTogether />
-      </motion.div>
+	  initial="hidden"
+	  whileInView="visible"
+	  variants={fadeInUp}
+	  custom={0}
+	  viewport={{ once: true, amount: 0.1 }}
+	  className="relative z-10"
+	>
+	  <WorkTogether />
+	</motion.div>
+
     </div>
   );
 };

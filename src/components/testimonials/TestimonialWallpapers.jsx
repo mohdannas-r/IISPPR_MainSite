@@ -1,6 +1,23 @@
 import React from 'react'
 
 const TestimonialWallpapers = () => {
+    const testimonialsData = [
+        {
+            imageSrc: '/home/t8.webp',
+            testimonialData: "The program has provided me with hands-on training in data analytics and its applications in public policy.",
+            name: "Christopher K.",
+        },
+        {
+            name: "Samson A.",
+            testimonialData: "The knowledge is unprecedented! The recordings of the lessons continue to be valuable resources for my learning.",
+            imageSrc: "/home/t3.webp"
+        },
+        {
+            name: "Derrick B.",
+            testimonialData: "The facilitators created a collaborative learning environment that fostered innovation and critical thinking.",
+            imageSrc: "/home/t4.webp"
+        },
+    ];
 
 
 
@@ -32,19 +49,19 @@ const TestimonialWallpapers = () => {
                     {/* Testimonial box */}
                     <div className="bg-white/5 hover:scale-105 hover:ease-in-out transition-all duration-300 backdrop-blur-md border border-white/30 rounded-xl p-4 md:p-8 w-full mt-4 md:mt-20 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl shadow-lg">
                         <p className="text-base sm:text-lg md:text-xl italic">
-                            "Their support changed how I manage my crops. Truly grateful for their dedication and knowledge!"
+                            "{testimonialsData[0].testimonialData}"
                         </p>
 
                         {/* Profile section */}
                         <div className="flex items-center mt-4 md:mt-6">
                             <img
-                                src="/testimonials/avatar.png"
+                                src={testimonialsData[0].imageSrc}
                                 alt="Profile"
                                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover"
                             />
                             <div className="ml-4">
-                                <h4 className="text-lg md:text-xl font-semibold">Suresh Patel</h4>
-                                <p className="text-xs sm:text-sm text-white/80">Organic Farmer</p>
+                                <h4 className="text-lg md:text-xl font-semibold">{testimonialsData[0].name}</h4>
+                                <p className="text-xs sm:text-sm text-white/80">Volunteer</p>
                             </div>
                         </div>
                     </div>
@@ -67,19 +84,19 @@ const TestimonialWallpapers = () => {
                     {/* Testimonial box on the right side */}
                     <div className="bg-white/10 hover:scale-105 hover:ease-in-out transition-all duration-300  backdrop-blur-md border border-white/30 rounded-xl p-4 md:p-8 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl shadow-lg">
                         <p className="text-base sm:text-lg md:text-xl italic text-white">
-                            "Their support changed how I manage my crops. Truly grateful for their dedication and knowledge!"
+                            "{testimonialsData[1].testimonialData}"
                         </p>
 
                         {/* Profile section */}
                         <div className="flex items-center mt-4 md:mt-6">
                             <img
-                                src="/testimonials/avatar.png"
+                                src={testimonialsData[1].imageSrc}
                                 alt="Profile"
                                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover"
                             />
                             <div className="ml-4">
-                                <h4 className="text-lg md:text-xl font-semibold text-white">Suresh Patel</h4>
-                                <p className="text-xs sm:text-sm text-white/80">Organic Farmer</p>
+                                <h4 className="text-lg md:text-xl font-semibold text-white">{testimonialsData[1].name}</h4>
+                                <p className="text-xs sm:text-sm text-white/80">Volunteer</p>
                             </div>
                         </div>
                     </div>
@@ -100,19 +117,19 @@ const TestimonialWallpapers = () => {
                 <div className="absolute top-0 left-0 w-full h-full flex items-center justify-start px-4 sm:px-6 md:px-10 z-10">
                     <div className="bg-white/10 hover:scale-105 hover:ease-in-out transition-all duration-300 backdrop-blur-md border border-white/30 rounded-xl p-4 md:p-8 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl shadow-lg">
                         <p className="text-base sm:text-lg md:text-xl italic text-white">
-                            "Their support changed how I manage my crops. Truly grateful for their dedication and knowledge!"
+                            "{testimonialsData[2].testimonialData}"
                         </p>
 
                         {/* Profile section */}
                         <div className="flex items-center mt-4 md:mt-6">
                             <img
-                                src="/testimonials/avatar.png"
+                                src={testimonialsData[2].imageSrc}
                                 alt="Profile"
                                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover"
                             />
                             <div className="ml-4">
-                                <h4 className="text-lg md:text-xl font-semibold text-white">Suresh Patel</h4>
-                                <p className="text-xs sm:text-sm text-white/80">Organic Farmer</p>
+                                <h4 className="text-lg md:text-xl font-semibold text-white">{testimonialsData[2].name}</h4>
+                                <p className="text-xs sm:text-sm text-white/80">Volunteer</p>
                             </div>
                         </div>
                     </div>

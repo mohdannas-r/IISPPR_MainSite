@@ -107,7 +107,7 @@ const Hero = () => {
         >
           <motion.button 
             variants={fadeInUp}
-            className="group relative px-6 py-3 border border-accent rounded-full text-sm text-white overflow-hidden transition-all duration-300 hover:scale-105"
+            className="group bg-transparent relative px-6 py-3 border border-white rounded-full text-sm text-white overflow-hidden transition-all duration-300 hover:scale-105"
           >
             <span className="relative z-10">Sustainable Environment</span>
             <div className="absolute inset-0 bg-accent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>

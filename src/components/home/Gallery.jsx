@@ -23,6 +23,7 @@ const GalleryCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
+  var images1 = [images[0],images[1],images[5],images[3],images[11],images[6],images[8]];
   useEffect(() => {
     const updateMobile = () => setIsMobile(window.innerWidth < 640);
     updateMobile();
@@ -51,7 +52,7 @@ const GalleryCarousel = () => {
   const handleMouseLeave = () => instanceRef.current?.play();
 
   return (
-    <section className="relative bg-white py-16 sm:py-20 md:py-24">
+    <section className="relative bg-black/10 py-16 sm:py-20 md:py-24">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <motion.div 
           initial="hidden"
@@ -77,7 +78,7 @@ const GalleryCarousel = () => {
           custom={1}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6"
         >
-          {images.slice(0, 6).map((src, index) => (
+          {images1.map((src, index) => (
             <div 
               key={index} 
               className={`overflow-hidden rounded-xl ${

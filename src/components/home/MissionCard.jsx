@@ -38,15 +38,15 @@ const MissionCard = () => {
           whileHover={{ scale: 1.05 }}
           className="bg-white/10 p-4 rounded-lg text-center backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
         >
-          <div className="text-accent text-3xl font-bold mb-2">200+</div>
-          <div className="text-sm font-medium">Projects Completed</div>
+          <div className="text-accent text-3xl font-bold mb-2">10K+</div>
+          <div className="text-sm font-medium">People Reach</div>
         </motion.div>
         <motion.div 
           whileHover={{ scale: 1.05 }}
           className="bg-white/10 p-4 rounded-lg text-center backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
         >
-          <div className="text-accent text-3xl font-bold mb-2">50K+</div>
-          <div className="text-sm font-medium">Trees Planted</div>
+          <div className="text-accent text-3xl font-bold mb-2">21+</div>
+          <div className="text-sm font-medium">Active States</div>
         </motion.div>
       </motion.div>
       

@@ -1,31 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ContactPage from './components/contact/ContactForm';
-import Layout from './components/layout/Layout';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
-import Contact from './pages/Contact';
-import Gallery from './pages/Gallery';
 import Projects from './pages/Projects';
-import Testimonials from './pages/Testimonials';
+import Gallery from './pages/Gallery';
+import Contact from './pages/Contact';
 
-import './App.css'
-
-const App = () => {
+function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="gallery" element={<Gallery />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="testimonials" element={<Testimonials />} />
-        </Route>
-      </Routes>
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
     </Router>
   );
-};
+}
 
 export default App;

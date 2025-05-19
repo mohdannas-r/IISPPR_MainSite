@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const NotFound = () => {
+const SearchNotFound = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get('q');
+
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="text-center">
@@ -12,9 +16,9 @@ const NotFound = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-6xl font-bold text-[#17594A] mb-4">404</h1>
+          <h1 className="text-6xl font-bold text-[#17594A] mb-4">No Results Found</h1>
           <p className="text-xl text-gray-600 mb-8">
-            Oops! The page you're looking for doesn't exist.
+            We couldn't find any results for "{searchQuery}"
           </p>
         </motion.div>
 
@@ -25,7 +29,7 @@ const NotFound = () => {
           className="space-y-4"
         >
           <p className="text-gray-500 mb-8">
-            The page might have been moved, deleted, or never existed.
+            Try different keywords or check your spelling.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -35,6 +39,12 @@ const NotFound = () => {
             >
               Go Home
             </Link>
+            <Link
+              to="/projects"
+              className="inline-flex items-center justify-center px-6 py-3 border border-[#17594A] text-base font-medium rounded-md text-[#17594A] bg-transparent hover:bg-[#17594A] hover:text-white transition-colors duration-300"
+            >
+              View All Projects
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -42,4 +52,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default SearchNotFound; 

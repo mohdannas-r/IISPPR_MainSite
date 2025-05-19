@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TestimonialCard = ({ index, name, testimonialdata, color }) => {
+const TestimonialCard = ({ index, name, testimonialdata }) => {
 
     const hoverCard = `
     .testimonial-card {
@@ -18,20 +18,20 @@ const TestimonialCard = ({ index, name, testimonialdata, color }) => {
             <style jsx global>
                 {hoverCard}
             </style>
-            <div key={index} className={`bg-[${color}]  p-6 rounded-xl testimonial-card w-[340px] m-6 h-[400px] text-white`}>
+            <div key={index} className="bg-[#17594A] p-6 rounded-xl testimonial-card w-[340px] m-6 h-[400px] text-white">
                 <div className="flex flex-col items-center mb-4">
                     <div className="w-24 h-24 bg-gray-700 rounded-full overflow-hidden mb-2">
                         <img
                             src="/placeholder.svg?height=100&width=100"
                             alt={name}
-
                             className="w-24 h-24 object-cover bg-[#23291C] rounded-full "
                         />
                     </div>
-                    <h4 className="font-medium leading-4 tex-xl">{name}</h4>
+                    <h4 className="font-medium leading-4 tex-xl text-white">{name}</h4>
                 </div>
-                <p className="text-[17px] px-6 text-center">
-                    {testimonialdata}               </p>
+                <p className="text-[17px] px-6 text-center text-white">
+                    {testimonialdata}
+                </p>
             </div>
         </>
     )

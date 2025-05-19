@@ -8,7 +8,7 @@ import AboutSection from '../components/home/AboutSection';
 
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden w-full">
       {/* Hero Section */}
       <Hero />
       

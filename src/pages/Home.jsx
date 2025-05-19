@@ -11,9 +11,13 @@ const Home = () => {
     <div className="overflow-x-hidden w-full">
       {/* Hero Section */}
       <Hero />
-      
+	  
+      {/* Stats Section */}
+      <StatsSection />
+	  
       {/* About Section */}
       <AboutSection />
+	  
       
       {/* Gallery Section */}
       <Gallery />
@@ -24,8 +28,7 @@ const Home = () => {
       {/* Testimonials Section */}
       <TestimonialsSection />
       
-      {/* Stats Section */}
-      <StatsSection />
+      
     </div>
   );
 };

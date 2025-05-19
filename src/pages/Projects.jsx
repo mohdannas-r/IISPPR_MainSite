@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import ProjectsList from '../components/projects/ProjectsList';
 
 const categories = [
@@ -38,101 +39,162 @@ const Projects = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Header with panoramic image */}
-      <div className="relative w-full h-[340px] md:h-[420px] lg:h-[500px] flex items-end justify-center overflow-hidden">
-        <img
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative w-full h-[340px] md:h-[420px] lg:h-[500px] flex items-end justify-center overflow-hidden"
+      >
+        <motion.img
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.2 }}
           src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
           alt="Projects Hero"
           className="absolute inset-0 w-full h-full object-cover object-center z-0"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80 z-10" />
         <div className="relative z-20 w-full max-w-6xl px-6 py-10 flex flex-col md:flex-row md:items-end md:justify-between">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg font-serif">Projects</h1>
             <p className="text-lg md:text-xl text-white/90 max-w-xl drop-shadow font-light">
               Explore our diverse range of impactful projects, from education and agriculture to water, energy, and innovation. Each initiative is designed to foster sustainable development and empower communities.
             </p>
-          </div>
-          <div className="bg-white/20 backdrop-blur-md rounded-lg p-6 mt-6 md:mt-0 md:ml-8 max-w-xs shadow-lg border border-white/30">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="bg-white/20 backdrop-blur-md rounded-lg p-6 mt-6 md:mt-0 md:ml-8 max-w-xs shadow-lg border border-white/30"
+          >
             <h2 className="text-xl font-semibold text-white mb-2">Our Mission</h2>
             <p className="text-white/90 text-sm mb-2">
               To create lasting positive change by supporting projects that nurture people and the planet.
             </p>
-            <a href="#learn-more" className="text-lime-300 font-medium underline">Learn More →</a>
-          </div>
+            <a href="#learn-more" className="text-lime-300 font-medium hover:text-lime-200 transition-colors duration-300 underline">Learn More →</a>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Filter Navigation */}
-      <div className="bg-[#f4f4f4] py-6 flex justify-center border-b border-gray-200">
-        <div className="flex flex-wrap gap-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+        className="bg-[#f4f4f4] py-8 flex justify-center border-b border-gray-200"
+      >
+        <div className="flex flex-wrap gap-4 px-4">
           {categories.map((cat) => (
-            <button
+            <motion.button
               key={cat}
-              className={`px-6 py-2 rounded-full font-semibold transition-colors duration-200 shadow-sm focus:outline-none ${
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-sm focus:outline-none ${
                 selectedCategory === cat
-                  ? 'bg-[#3d4d2b] text-white'
-                  : 'bg-[#e3e8dd] text-[#3d4d2b] hover:bg-[#cdd7c0]'
+                  ? 'bg-accent text-white shadow-lg'
+                  : 'bg-white text-gray-700 hover:bg-gray-100'
               }`}
               onClick={() => setSelectedCategory(cat)}
             >
               {cat}
-            </button>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Projects Grid */}
-      <div className="flex-1 bg-white pb-0">
-        <div className="max-w-6xl mx-auto px-4">
-          <ProjectsList projects={filtered} />
-        </div>
+      <div className="flex-1 bg-white">
+        <ProjectsList projects={filtered} />
       </div>
 
       {/* Wavy Divider */}
-      <div className="relative w-full overflow-hidden" style={{height:'80px', marginTop:'-40px'}}>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="relative w-full overflow-hidden" 
+        style={{height:'80px', marginTop:'-40px'}}
+      >
         <svg className="absolute bottom-0 left-0 w-full h-full" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill="#3d4d2b" d="M0,0 C480,80 960,0 1440,80 L1440,80 L0,80 Z"></path>
         </svg>
-      </div>
+      </motion.div>
 
       {/* Footer */}
-      <footer className="bg-[#202d1a] text-white py-10 px-6 md:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
-          <div>
-            <h4 className="font-bold text-lime-400 mb-2">Third Life</h4>
+      <footer className="bg-[#202d1a] text-white py-16 px-6 md:px-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <h4 className="font-bold text-lime-400 mb-4">IISPPR</h4>
             <p>1234 Greenway Ave.<br />Eco City, 45678</p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Contact</h4>
-            <ul>
-              <li>Email: <a href="mailto:info@thirdlife.org" className="hover:text-lime-400">info@thirdlife.org</a></li>
-              <li>Phone: <a href="tel:+1234567890" className="hover:text-lime-400">+1 234 567 890</a></li>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.6 }}
+          >
+            <h4 className="font-bold mb-4">Contact</h4>
+            <ul className="space-y-2">
+              <li>Email: <a href="mailto:info@iisppr.org" className="hover:text-lime-400 transition-colors duration-300">info@iisppr.org</a></li>
+              <li>Phone: <a href="tel:+1234567890" className="hover:text-lime-400 transition-colors duration-300">+1 234 567 890</a></li>
             </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Newsletter</h4>
-            <input type="email" placeholder="Enter your email" className="px-3 py-1 rounded text-black w-full mb-2" />
-            <button className="bg-lime-400 text-black px-4 py-1 rounded w-full hover:bg-lime-500">Subscribe</button>
-          </div>
-          <div>
-            <h4 className="font-bold mb-2">Follow Us</h4>
-            <div className="flex space-x-4 mt-2">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+          >
+            <h4 className="font-bold mb-4">Newsletter</h4>
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="px-4 py-2 rounded-lg text-black w-full mb-3 focus:outline-none focus:ring-2 focus:ring-lime-400 transition-all duration-300" 
+            />
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-lime-400 text-black px-4 py-2 rounded-lg w-full hover:bg-lime-500 transition-colors duration-300"
+            >
+              Subscribe
+            </motion.button>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            <h4 className="font-bold mb-4">Follow Us</h4>
+            <div className="flex space-x-4">
               {socialIcons.map((icon, i) => (
-                <a
+                <motion.a
                   key={i}
                   href={icon.href}
-                  className="text-lime-400 text-2xl hover:text-lime-300 transition-colors"
+                  className="text-lime-400 text-2xl hover:text-lime-300 transition-colors duration-300"
                   aria-label={icon.label}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   {icon.icon}
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-        <div className="text-center mt-6 text-xs text-gray-400">
-          © 2025 Third Life. All rights reserved.
-        </div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3, duration: 0.6 }}
+          className="text-center mt-8 text-xs text-gray-400"
+        >
+          © 2025 IISPPR. All rights reserved.
+        </motion.div>
       </footer>
     </div>
   );

@@ -18,21 +18,21 @@ const fadeInUp = {
 const ProjectsHighlight = () => {
   const projects = [
     {
-      title: 'Project 1',
+      title: 'Democratising Public Policy Education',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum sem quis eros posuere.',
+        'Making public policy accessible to students, young professionals, and grassroots communities by 2030.',
       image: '/gallery/im1.jpg'
     },
     {
-      title: 'Project 2',
+      title: 'Grassroot Research: Problem-Led Inquiry',
       description:
-        'Sed ultricies libero quis sem porttitor lacinia. Nunc a ultrices ex. Nulla facilisi.',
+        'Challenging top-down research by empowering communities to become co-creators of knowledge.',
       image: '/gallery/im2.jpeg'
     },
     {
-      title: 'Project 3',
+      title: 'RTI Advocacy: Empowering Villages Through Information',
       description:
-        'Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et netus.',
+        'Spreading awareness and demystifying the RTI Act to activate democratic participation in rural India.',
       image: '/gallery/im3.jpeg'
     },
   ];

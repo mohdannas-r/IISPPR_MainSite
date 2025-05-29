@@ -12,16 +12,53 @@ const categories = [
 ];
 
 const projectData = [
-  { id: 1, title: "Green Schools", category: "Education", color: "#a3b18a", description: "Empowering youth with eco-education.", image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80", location: "Kenya" },
-  { id: 2, title: "Urban Gardens", category: "Agriculture", color: "#b6c197", description: "Transforming city spaces into green havens.", image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80", location: "USA" },
-  { id: 3, title: "Clean Water Wells", category: "Water", color: "#8a9a5b", description: "Providing safe water to rural communities.", image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80", location: "India" },
-  { id: 4, title: "Solar Villages", category: "Energy", color: "#5a6840", description: "Bringing renewable energy to remote areas.", image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", location: "Morocco" },
-  { id: 5, title: "Innovation Labs", category: "Innovation", color: "#3d4d2b", description: "Incubating sustainable solutions.", image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80", location: "Germany" },
-  { id: 6, title: "Agroforestry", category: "Agriculture", color: "#b6c197", description: "Blending trees and crops for resilience.", image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80", location: "Brazil" },
-  { id: 7, title: "Water Harvesting", category: "Water", color: "#8a9a5b", description: "Capturing rain for year-round use.", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80", location: "Australia" },
-  { id: 8, title: "Eco-Energy Hubs", category: "Energy", color: "#5a6840", description: "Community-run clean power stations.", image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", location: "Nepal" },
-  { id: 9, title: "Green Tech Bootcamp", category: "Innovation", color: "#3d4d2b", description: "Training the next wave of eco-innovators.", image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80", location: "UK" },
+  {
+    id: 1,
+    title: "Democratising Public Policy Education",
+    category: "Education",
+    color: "#a3b18a",
+    description: "Making public policy accessible to students, young professionals, and grassroots communities by 2030.",
+    image: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80",
+    location: "India"
+  },
+  {
+    id: 2,
+    title: "Grassroot Research: Problem-Led Inquiry",
+    category: "Innovation",
+    color: "#3d4d2b",
+    description: "Challenging top-down research by empowering communities to become co-creators of knowledge.",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+    location: "India"
+  },
+  {
+    id: 3,
+    title: "RTI Advocacy: Empowering Villages Through Information",
+    category: "Education",
+    color: "#a3b18a",
+    description: "Spreading awareness and demystifying the RTI Act to activate democratic participation in rural India.",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+    location: "India"
+  },
+  {
+    id: 4,
+    title: "Kaam Ka Haq: Labor Rights for Every Worker",
+    category: "Innovation",
+    color: "#3d4d2b",
+    description: "Educating and empowering informal sector workers on legal labor rights and workplace dignity.",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+    location: "India"
+  },
+  {
+    id: 5,
+    title: "Nari Parcham: Grassroots Women’s Leadership Initiative",
+    category: "Education",
+    color: "#a3b18a",
+    description: "Identifying and nurturing local women leaders to influence decision-making from the ground up.",
+    image: "https://images.unsplash.com/photo-1526925539332-aa3b66e35444?auto=format&fit=crop&w=800&q=80",
+    location: "India"
+  }
 ];
+
 
 const socialIcons = [
   { href: "#", label: "Twitter", icon: <span role="img" aria-label="Twitter">🐦</span> },

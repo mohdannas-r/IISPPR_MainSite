@@ -65,40 +65,39 @@ const Layout = () => {
                 <Outlet />
             </main>
             
-            <footer className="bg-primary text-white py-8 sm:py-12">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                        <div>
-                            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">IISPPR</h3>
-                            <p className="text-gray-300 text-sm sm:text-base">Promoting sustainable practices and environmental conservation for a healthier planet.</p>
+            <footer className="bg-primary text-white pt-8 pb-4">
+                <div className="container mx-auto px-6">
+                    {/* Top Divider */}
+                    <div className="border-t border-primary-light mb-8"></div>
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-10 md:gap-20">
+                        {/* Brand & Mission */}
+                        <div className="flex-1 mb-8 md:mb-0">
+                            <h3 className="text-2xl font-extrabold mb-2 tracking-wide">IISPPR</h3>
+                            <p className="text-gray-200 text-base leading-relaxed max-w-xs">
+                                Promoting sustainable practices and environmental conservation for a healthier planet.
+                            </p>
                         </div>
-                        <div>
-                            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
-                            <ul className="space-y-2">
-                                <li><Link to="/" className="text-gray-300 text-sm sm:text-base hover:text-white transition-colors">Home</Link></li>
-                                <li><Link to="/about" className="text-gray-300 text-sm sm:text-base hover:text-white transition-colors">About</Link></li>
-                                <li><Link to="/projects" className="text-gray-300 text-sm sm:text-base hover:text-white transition-colors">Projects</Link></li>
-                                <li><Link to="/contact" className="text-gray-300 text-sm sm:text-base hover:text-white transition-colors">Contact</Link></li>
+                        {/* Quick Links */}
+                        <div className="flex-1 mb-8 md:mb-0">
+                            <h4 className="font-semibold mb-2 text-lg text-accent">Quick Links</h4>
+                            <ul className="text-gray-100 text-base space-y-1">
+                                <li>Home</li>
+                                <li>About</li>
+                                <li>Projects</li>
+                                <li>Contact</li>
                             </ul>
                         </div>
-                        <div>
-                            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Contact</h4>
-                            <p className="text-gray-300 text-sm sm:text-base">123 Nature Street</p>
-                            <p className="text-gray-300 text-sm sm:text-base">Green City, Earth</p>
-                            <p className="text-gray-300 text-sm sm:text-base">info@greeninitiative.org</p>
-                            <p className="text-gray-300 text-sm sm:text-base">+1 (555) 123-4567</p>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Follow Us</h4>
-                            <div className="flex space-x-4">
-                                <a href="#" className="bg-primary-light hover:bg-accent p-2 rounded-full transition-colors text-white">F</a>
-                                <a href="#" className="bg-primary-light hover:bg-accent p-2 rounded-full transition-colors text-white">T</a>
-                                <a href="#" className="bg-primary-light hover:bg-accent p-2 rounded-full transition-colors text-white">I</a>
-                                <a href="#" className="bg-primary-light hover:bg-accent p-2 rounded-full transition-colors text-white">L</a>
-                            </div>
+                        {/* Address */}
+                        <div className="flex-1">
+                            <h4 className="font-semibold mb-2 text-lg text-accent">Address</h4>
+                            <address className="not-italic text-gray-200 text-base leading-relaxed whitespace-pre-line">
+                                Office No. 30 Nihad Plaza, Opposite Zakir Hussain School, Civil lines, Near AMU, Aligarh 202001
+                            </address>
                         </div>
                     </div>
-                    <div className="border-t border-primary-light mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300 text-sm sm:text-base">
+                    {/* Bottom Divider */}
+                    <div className="border-t border-primary-light mt-8 mb-4"></div>
+                    <div className="text-center text-gray-400 text-sm">
                         <p>© {new Date().getFullYear()} IISPPR. All rights reserved.</p>
                     </div>
                 </div>

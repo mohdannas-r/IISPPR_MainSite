@@ -90,15 +90,7 @@ const EnvironmentalSplash = () => {
                                 transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                             >
                                 {/* Earth/Globe Icon */}
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="text-green-300">
-                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-                                    <path
-                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                    />
-                                    <path d="M2 12h20" stroke="currentColor" strokeWidth="2" />
-                                </svg>
+                                <img src="/images/IISPPR_LOGO.png" class="h-30 w-30" alt="my icon"/>
                             </motion.div>
                         </div>
 
